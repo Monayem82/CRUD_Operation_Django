@@ -1,0 +1,17 @@
+{% extends 'common/index.html' %}{% load static %}
+{% block css %} 
+{% endblock css %}
+{% block title %} Show data {% endblock title %}
+
+{% block content %}
+    <main class="userhome container">
+        <br>
+        <h1 class="text-center">Gallary</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+{% endblock content %}

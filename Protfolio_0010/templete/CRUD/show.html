@@ -1,0 +1,31 @@
+{% extends 'common/index.html' %}{% load static %}
+{% block css %} 
+{% endblock css %}
+{% block title %} Show data {% endblock title %}
+
+{% block content %}
+    <main class="userhome container">
+        <br>
+        <h1 class="text-center">All data are shown</h1>
+        <table class="table table-primary p-2">
+            <tr>
+                <th>Serial</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Topic</th>
+                <th>Explainations</th>
+                <th>Actions</th>
+            </tr>
+            {% for data in dataset %}
+               <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.topic}}</td>
+                    <td>{{data.describe}}</td>
+                    <td><a href="/crud/update/{{data.id}}/">Update</a> | <a href="/crud/delete/{{data.id}}/">Delete</a></td>
+               </tr>
+            {% endfor %}
+        </table>
+    </main>
+{% endblock content %}

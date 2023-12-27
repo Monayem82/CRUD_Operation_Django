@@ -1,0 +1,34 @@
+{% extends 'common/index.html' %}{% load static %}
+{% block css %} 
+{% endblock css %}
+{% block title %} update data {% endblock title %}
+
+{% block content %}
+    <main class="userhome container">
+        <h1 class="text-center">Update your news</h1>
+        <section>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{news}}
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Name</label>
+                  <input type="text" name="name" class="form-control" value="{{news.name}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Topic</label>
+                  <input type="text" name="topic" value="{{news.topic}}" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Describe</label>
+                  <textarea class="form-control" name="describe" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">{{news.describe}}</textarea>
+                  <!-- <textarea name="describe" class="form-label" id="exampleInputPassword1" cols="30" rows="10">{{news.describe}}</textarea> -->
+                </div>
+                <div>
+                    <label for="id_field">Field:</label>
+                    <input type="file" name="field" required id="id_field">
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </section>
+    </main>
+{% endblock content %}

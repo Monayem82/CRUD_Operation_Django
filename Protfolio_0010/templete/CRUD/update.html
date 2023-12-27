@@ -1,0 +1,27 @@
+{% extends 'common/index.html' %}{% load static %}
+{% block css %} 
+{% endblock css %}
+{% block title %} update data {% endblock title %}
+
+{% block content %}
+    <main class="userhome container">
+        <br>
+        <form action="" method="POST" novalidate>
+            <h1 class="text-center">Update Your data</h1>
+                {% csrf_token %}
+            
+                <label for="id_name">Name:</label> <input type="text" value="{{dataset.name}}" name="name" class="form-control" placeholder="Enter your Name" required id="id_name">  <br>
+            
+                <label for="id_email">Email:</label> <input type="email" value="{{dataset.email}}" name="email" class="form-control" placeholder="Enter your Emial" maxlength="320" required id="id_email">  <br>
+            
+                <label for="id_topic">Topic:</label> <input type="text" value="{{dataset.topic}}" name="topic" class="form-control" placeholder="Write Topic name" required id="id_topic">  <br>
+            
+                <label for="id_describe">Describe:</label> 
+                <textarea name="describe" cols="40" rows="10" class="form-control" placeholder="Freely write ..." required id="id_describe">{{dataset.describe}}
+</textarea>  <br>
+            
+
+            <input type="submit" value="Save">
+        </form>
+    </main>
+{% endblock content %}

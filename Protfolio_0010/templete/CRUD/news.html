@@ -1,0 +1,41 @@
+{% extends 'common/index.html' %}{% load static %}
+{% block css %} 
+{% endblock css %}
+{% block title %} Show data {% endblock title %}
+
+{% block content %}
+    <main class="userhome container">
+        <br>
+        <h1 class="text-center">Gallary</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <section>
+            <div class="table-responsive">
+                <table class="table table-secondary">
+                    <tr>
+                        <th>Serial:</th>
+                        <th>Name:</th>
+                        <th>Topic:</th>
+                        <th>describe:</th>
+                        <th>Image:</th>
+                        <th>Actions:</th>
+                    </tr>
+                    {% for sh in show %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{sh.name}}</td>
+                        <td>{{sh.topic}}</td>
+                        <td>{{sh.describe}}</td>
+                        <td><img src="/media/{{sh.field}}" alt="" height="50px" width="50px" alt="mmmmmm" class="img-fluid"></td>
+                        <td><a href="/crud/updateN/{{sh.id}}">update</a> | <a href="/crud/deleteN/{{sh.id}}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
